@@ -8,6 +8,7 @@ export default {
     logOut: 'Log Out',
     dashboard: 'Dashboard',
     github: 'Github',
+    lockscreen: 'Lock Screen',
     screenfull: 'screenfull',
     theme: 'theme'
   },

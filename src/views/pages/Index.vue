@@ -1,6 +1,14 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
+      <el-input placeholder="搜索关键字" style="width: 300px" value="" />
+      <el-select v-model="query.status" clearable placeholder="状态">
+        <el-option :value="0" label="未支付" />
+        <el-option :value="1" label="已支付" />
+      </el-select>
+      <el-button type="primary" icon="el-icon-search">{{ $t('table.search') }}</el-button>
+    </div>
+    <div class="app-container">
       <el-checkbox-group v-model="checkboxVal">
         <el-checkbox label="apple">apple</el-checkbox>
         <el-checkbox label="banana">banana</el-checkbox>
@@ -25,6 +33,9 @@ export default {
   name: 'Home',
   data() {
     return {
+      query: {
+        status: ''
+      },
       tableData: [],
       formTheadOptions: ['apple', 'banana', 'orange'],
       checkboxVal: defaultFormThead, // checkboxVal
@@ -34,7 +45,7 @@ export default {
   watch: {
     checkboxVal(valArr) {
       this.formThead = this.formTheadOptions.filter(i => valArr.indexOf(i) >= 0)
-      this.key = this.key + 1// 为了保证table 每次都会重渲 In order to ensure the table will be re-rendered each time
+      // this.key = this.key + 1// 为了保证table 每次都会重渲 In order to ensure the table will be re-rendered each time
     }
   },
   mounted() {
