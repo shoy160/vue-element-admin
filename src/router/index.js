@@ -29,6 +29,12 @@ export const constantRouterMap = [{
   component: () =>
       import('@/views/errorPage/401'),
   hidden: true
+}, {
+  path: '/locking',
+  name: 'locking',
+  component: () =>
+      import('@/components/LockScreen/components/LockingPage'),
+  hidden: true
 },
 {
   path: '',

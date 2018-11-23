@@ -7,6 +7,10 @@
     <div class="right-menu">
       <error-log class="errLog-container right-menu-item"/>
 
+      <el-tooltip :content="$t('navbar.lockscreen')" effect="dark" placement="bottom">
+        <lock-screen class="lockscreen right-menu-item"/>
+      </el-tooltip>
+
       <el-tooltip :content="$t('navbar.screenfull')" effect="dark" placement="bottom">
         <screenfull class="screenfull right-menu-item"/>
       </el-tooltip>
@@ -42,6 +46,7 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
+import LockScreen from '@/components/LockScreen'
 import Screenfull from '@/components/Screenfull'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemePicker'
@@ -51,6 +56,7 @@ export default {
     Breadcrumb,
     Hamburger,
     ErrorLog,
+    LockScreen,
     Screenfull,
     LangSelect,
     ThemePicker

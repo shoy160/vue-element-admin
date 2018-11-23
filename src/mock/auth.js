@@ -26,6 +26,16 @@ export default {
     } = JSON.parse(config.body)
     return userMap[account]
   },
+  check: config => {
+    const {
+      password
+    } = JSON.parse(config.body)
+    var status = password === '123456'
+    return {
+      status: status,
+      message: status ? '' : '登录密码不正确'
+    }
+  },
   getUserInfo: config => {
     const {
       token

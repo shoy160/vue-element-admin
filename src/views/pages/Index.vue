@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-    <div>{{ name }} </div>
     <div class="filter-container">
       <el-checkbox-group v-model="checkboxVal">
         <el-checkbox label="apple">apple</el-checkbox>
@@ -9,7 +8,7 @@
       </el-checkbox-group>
     </div>
 
-    <el-table :data="tableData" :key="key" border fit highlight-current-row style="width: 100%">
+    <el-table :data="tableData" border fit highlight-current-row style="width: 100%">
       <el-table-column prop="name" label="fruitName" width="180"/>
       <el-table-column v-for="fruit in formThead" :key="fruit" :label="fruit">
         <template slot-scope="scope">
@@ -27,7 +26,6 @@ export default {
   data() {
     return {
       tableData: [],
-      key: 1, // table key
       formTheadOptions: ['apple', 'banana', 'orange'],
       checkboxVal: defaultFormThead, // checkboxVal
       formThead: defaultFormThead // 默认表头 Default header

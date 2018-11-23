@@ -1,15 +1,21 @@
 import request from '@/utils/request'
 
 export const loginByUsername = (account, password) => {
-  return request.post('login/login', {
+  return request.post('account/login', {
     account,
     password
   })
 }
 
+export const checkPwd = password => {
+  return request.post('account/check', {
+    password: password
+  })
+}
+
 export const logout = () => {
   return request({
-    url: '/login/logout',
+    url: '/account/logout',
     method: 'post'
   })
 }
@@ -17,7 +23,7 @@ export const logout = () => {
 export const getUserInfo = token => {
   token = 'admin'
   return request({
-    url: '/user/info',
+    url: '/account/info',
     method: 'get',
     params: {
       token
