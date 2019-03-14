@@ -298,3 +298,33 @@ export function deepClone(source) {
 export function uniqueArr(arr) {
   return Array.from(new Set(arr))
 }
+
+/**
+ * 是否有权限
+ * @param {*} roles 权限集约束
+ * @param {*} current 当前权限
+ */
+export function hasPermission(roles, current) {
+  // 没有权限约束 全部都有权限
+  if (roles === undefined) return true
+  // 当前权限没有 全都没权限
+  if (current === undefined) return false
+  if (!(roles instanceof Array)) {
+    roles = [roles]
+  }
+  if (roles.length === 0) return true
+  // admin 所有权限
+  if (current instanceof Array) {
+    // if (current.indexOf('admin') >= 0) return true
+    return roles.some(role => current.indexOf(role) >= 0)
+  }
+  // if (current === 'admin') return true
+  return roles.some(role => role === current)
+}
+
+import store from '@/store'
+
+export function hasRole(roles) {
+  var current = store.getters.roles
+  return hasPermission(roles, current)
+}

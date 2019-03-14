@@ -6,7 +6,7 @@
         <el-option :value="0" label="未支付" />
         <el-option :value="1" label="已支付" />
       </el-select>
-      <el-button type="primary" icon="el-icon-search">{{ $t('table.search') }}</el-button>
+      <el-button v-if="hasRole('admin1')" type="primary" icon="el-icon-search">{{ $t('table.search') }}</el-button>
     </div>
     <div class="app-container">
       <el-checkbox-group v-model="checkboxVal">
@@ -27,6 +27,7 @@
   </div>
 </template>
 <script>
+import { hasRole } from '@/utils'
 import { homedata } from '@/api/home'
 const defaultFormThead = ['apple', 'banana', 'orange']
 export default {
@@ -52,6 +53,9 @@ export default {
     homedata().then(json => {
       this.tableData = json
     })
+  },
+  methods: {
+    hasRole: hasRole
   }
 }
 // 文档地址 http://element-cn.eleme.io/#/zh-CN/component/installation
